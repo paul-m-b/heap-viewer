@@ -143,11 +143,11 @@ def add_malloc_chunk_struct(ptr_size=8):
 
 # --------------------------------------------------------------------------
 def get_arch_ptrsize():
-    info = idaapi.get_inf_structure() 
+    #info = idaapi.get_inf_structure() 
     ptr_size = None  
-    if info.is_64bit():
+    if idaapi.inf_is_64bit():
         ptr_size = 8
-    elif info.is_32bit():
+    elif idaapi.is_32bit_exactly():
         ptr_size = 4
     else:
         raise Exception("Invalid arch")
